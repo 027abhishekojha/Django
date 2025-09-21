@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post.title }}</title>
+</head>
+<body>
+   <h1>{{ post.title }}</h1>
+    <p>{{ post.description }}</p>
+    <small>Posted on: {{ post.created_at }}</small>
+<h3>Leave a comment</h3>
+<form method="post">
+    {% csrf_token %}
+    <label>
+        <textarea name="text" rows="4" cols="50"></textarea>
+    </label>
+    <br>
+    <button type="submit">Post comment</button>
+</form>
+    <hr>
+    <ul>
+    {% for comment in comments %}
+        <li>  {{ comment }} | <small>{{ comment.created_at }}</small> </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

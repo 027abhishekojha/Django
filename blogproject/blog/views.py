@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from django.template.defaulttags import comment
 
@@ -8,7 +9,7 @@ def post_list(request):
     context = {'posts': posts}
     return render(request, 'blog/post_list.html', context)
 
-
+@login_required
 def post_details(request, pk):
     post = get_object_or_404(Post, pk=pk)
 

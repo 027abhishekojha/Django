@@ -5,6 +5,7 @@
     <title>{{ post.title }}</title>
 </head>
 <body>
+{% if user.is_authenticated %}
    <h1>{{ post.title }}</h1>
     <p>{{ post.description }}</p>
     <small>Posted on: {{ post.created_at }}</small>
@@ -23,5 +24,9 @@
         <li>  {{ comment }} | <small>{{ comment.created_at }}</small> </li>
     {% endfor %}
     </ul>
+{% else %}
+    <p>You are not login  <a href="{% url 'login' %}">  Login Here</a> </p>
+
+{% endif %}
 </body>
 </html>
